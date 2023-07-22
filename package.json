@@ -1,0 +1,21 @@
+{
+  "name": "electron-rainmeter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-packager . --platform=win32 --arch=x64 --icon=icon.ico --out=build --overwrite"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "electron-acrylic-window": "^0.5.11",
+    "electron-bottom-window": "^1.0.3"
+  },
+  "devDependencies": {
+    "electron": "^25.3.1",
+    "electron-packager": "^17.1.1"
+  }
+}

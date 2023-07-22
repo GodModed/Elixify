@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrix</title>
+</head>
+<style>
+    * {
+        -webkit-user-select: none;
+        user-select: none;
+        -webkit-app-region: drag;
+    }
+
+    body {
+        -webkit-app-region: drag;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+    }
+</style>
+
+<body>
+    <canvas id="Matrix"></canvas>
+    <script>
+        /**
+         * @source https://github.com/javascriptacademy-stash/digital-rain
+         */
+        const canvas = document.getElementById('Matrix');
+        const context = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
+        const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const nums = '0123456789';
+
+        const alphabet = katakana + latin + nums;
+
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+
+        const rainDrops = [];
+
+        for (let x = 0; x < columns; x++) {
+            rainDrops[x] = 1;
+        }
+
+        const draw = () => {
+            let oldArray = context.getImageData(0, 0, canvas.width, canvas.height);
+            //count through only the alpha pixels
+            for (var d = 3; d < oldArray.data.length; d += 4) {
+                //dim it with some feedback, I'm using .9
+                oldArray.data[d] = Math.floor(oldArray.data[d] * .95);
+            }
+            context.putImageData(oldArray, 0, 0);
+
+            context.fillStyle = '#0F0';
+            context.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < rainDrops.length; i++) {
+                const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+                context.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+
+                if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    rainDrops[i] = 0;
+                }
+                rainDrops[i]++;
+            }
+        };
+
+        setInterval(draw, 30);
+    </script>
+</body>
+
+</html>

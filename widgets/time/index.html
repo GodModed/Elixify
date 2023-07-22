@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time</title>
+    <style>
+        @font-face {
+            font-family: 'Poppins';
+            src: url('../../fonts/Poppins-SemiBold.ttf');
+        }
+
+        * {
+            -webkit-user-select: none;
+            user-select: none;
+            -webkit-app-region: drag;
+        }
+
+        body {
+            -webkit-app-region: drag;
+        }
+
+        .center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Poppins';
+            font-size: 100px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="center">
+        00:00:00
+    </div>
+    <script>
+        function updateTime() {
+            const date = new Date();
+            const hours = date.getHours() % 12 || 12;
+            const minutes = date.getMinutes();
+            const seconds = date.getSeconds();
+            // add extra 0's
+            const time = `${hours < 10 ? "0" + hours : hours}:${minutes < 10 ? "0" + minutes : minutes}:${seconds < 10 ? "0" + seconds : seconds}`;
+            document.body.innerHTML = "<div class='center'>" + time + "</div>";
+        }
+        setInterval(updateTime, 1000);
+    </script>
+</body>
+</html>
