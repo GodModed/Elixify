@@ -11,8 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "electron-acrylic-window": "^0.5.11",
-    "electron-bottom-window": "^1.0.3"
+    "electron-acrylic-window": "^0.5.11"
   },
   "devDependencies": {
     "electron": "^25.3.1",
