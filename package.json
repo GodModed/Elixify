@@ -1,20 +1,22 @@
 {
-  "name": "electron-rainmeter",
+  "name": "elixify",
   "version": "1.0.0",
-  "description": "",
+  "description": "Basically a rainmeter clone, but in electron.",
   "main": "index.js",
   "scripts": {
     "start": "electron .",
-    "build": "electron-packager . --platform=win32 --arch=x64 --icon=icon.ico --out=build --overwrite"
+    "build": "electron-packager . elixify --platform=win32 --arch=x64 --icon=icon.ico --out=build --overwrite",
+    "setup": "electron-installer-windows --src build/elixify-win32-x64/ --dest build/installers/"
   },
   "keywords": [],
-  "author": "",
+  "author": "Godmoded",
   "license": "ISC",
   "dependencies": {
     "electron-acrylic-window": "^0.5.11"
   },
   "devDependencies": {
     "electron": "^25.3.1",
+    "electron-installer-windows": "^3.0.0",
     "electron-packager": "^17.1.1"
   }
 }
