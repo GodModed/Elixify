@@ -2,3 +2,4 @@ build/
 node_modules/
 positions.json
 enabled.json
+positions copy.json

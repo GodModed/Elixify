@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+</head>
+<style>
+    @font-face {
+        font-family: 'Poppins';
+        src: url('../../fonts/Poppins-Thin.ttf');
+    }
+
+    * {
+        -webkit-user-select: none;
+        user-select: none;
+        -webkit-app-region: drag;
+    }
+
+    body {
+        -webkit-app-region: drag;
+    }
+
+    pre {
+        color: white;
+        font-family: monospace;
+        overflow: hidden;
+        word-wrap: break-word;
+        white-space: pre-wrap;
+        font-size: 12.8px;
+        margin: 0;
+        padding: 0;
+    }
+</style>
+
+<body>
+    <pre></pre>
+    <script>
+        const pre = document.querySelector('pre');
+
+        async function updateWeather() {
+            const data = await fetch('http://wttr.in/?TF1');
+            const text = await data.text();
+            // parse text as html. Then set the pre element's innerHTML to the text content of the pre element in the html
+            pre.innerHTML = new DOMParser().parseFromString(text, 'text/html').querySelector('pre').textContent;
+        }
+
+        updateWeather();
+        setInterval(updateWeather, 1000 * 60);
+    </script>
+</body>
+
+</html>

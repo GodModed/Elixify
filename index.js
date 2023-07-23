@@ -54,7 +54,7 @@ async function loadWidgets() {
             alwaysOnTop: false,
             skipTaskbar: true,
             x: position[0],
-            y: position[1],
+            y: position[1]
         });
 
         if (hidden) {
